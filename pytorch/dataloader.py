@@ -31,7 +31,7 @@ class DatasetLoader:
 
         return train_dataloader, val_dataloader
 
-    def loader(self):
+    def load(self):
         train_loader, val_loader = self.init_dataloader
         return train_loader, val_loader
 
