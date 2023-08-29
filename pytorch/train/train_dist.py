@@ -13,7 +13,7 @@ class Trainer:
 
     def train(self, train_loader):
         for batch_idx, (image, label) in enumerate(tqdm(train_loader)):
-            image = image.to(cfg.DEVICE)
+            image = image.to(cfg.DEVICE, non_blocking=True)
 
             self.optimizer.zero_grad()
 
@@ -51,7 +51,7 @@ class Trainer:
 
         with torch.no_grad():
             for images, labels in tqdm(validation_loader):
-                images, labels = images.to(cfg.DEVICE), labels.to(cfg.DEVICE)
+                images, labels = images.to(cfg.DEVICE, non_blocking=True), labels.to(cfg.DEVICE, non_blocking=True)
 
                 # Forward pass
                 outputs = self.student_model(images)

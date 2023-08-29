@@ -27,7 +27,7 @@ class MFTrainer:
         train_accuracy = 0
 
         for batch_idx, (data, label) in enumerate(tqdm(train_loader)):
-            data, label = data.to(cfg.DEVICE), label.to(cfg.DEVICE)
+            data, label = data.to(cfg.DEVICE, non_blocking=True), label.to(cfg.DEVICE, non_blocking=True)
 
             with torch.cuda.amp.autocast(enabled=self.scaler is not None):
                 prediction = self.model(data)
