@@ -1,5 +1,6 @@
 from torch.utils.data import Dataset, DataLoader, random_split
 
+
 class SiameseDataset(Dataset):
     def __init__(self, image_folder, transform=None):
         self.image_folder = image_folder
@@ -57,10 +58,11 @@ class SiameseDataset(Dataset):
             img1 = self.transform(img1)
             img2 = self.transform(img2)
 
-        return img1, img2, torch.tensor(same_class, dtype=torch.float32).to('cpu')
+        return img1, img2, torch.tensor(same_class, dtype=torch.float32).to("cpu")
 
     def __len__(self):
         return len(self.image_folder)
+
     @staticmethod
     def img_load(data_path, image_list):
         label_map = os.listdir(data_path)
